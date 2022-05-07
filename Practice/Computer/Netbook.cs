@@ -10,10 +10,12 @@ namespace Practice
     {
         public NetBook()
         {
+            // 가격과 서비스 등록
             price = 7000;
             availableServices = new Services[] { Services.Internet };
         }
 
+        // id 받기
         public override string GetIdType()
         {
             return "NetId";

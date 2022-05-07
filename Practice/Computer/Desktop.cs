@@ -10,10 +10,12 @@ namespace Practice
     {
         public Desktop()
         {
+            // 가격과 사용 가능한 정보
             price = 13000;
             availableServices = new Services[] {Services.Internet, Services.Scientific, Services.Game };
         }
 
+        // id 에 대한 타입
         public override string GetIdType()
         {
             return "DeskId";

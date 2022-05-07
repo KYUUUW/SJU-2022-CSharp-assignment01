@@ -6,15 +6,21 @@ using System.Threading.Tasks;
 
 namespace Practice
 {
+    // 컴퓨터 종류들의 부모 클래스
     abstract class Computer
     {
+        // 컴퓨터 종류별 id
         public int Id { get; init; }
+        // 컴퓨터 전체 id
         public int Cid { get; init; }
 
+        // 대여일, 사용일 등... -1 일이면 등록 안된것
         public int dayRequested = -1;
         public int dayLeft = -1;
         public int dayUsed = -1;
         public int price = 0;
+        
+        // 사용 가능한 서비스들
         public Services[] availableServices;
 
         /**
@@ -39,21 +45,24 @@ namespace Practice
             ResetDate();
             return payment;
         }
-
+        // 다음 날로 넘어감
         public int MoveToNextDay()
         {
             if(dayRequested == -1) {
                 return -1; // -1 을 return 하면 아직 기한이 남은 것임
             }
+            // 날짜를 이동함
             dayLeft -= 1;
             dayUsed += 1;
             if(dayLeft == 0)
             {
+                // 대여종료하고 가격 return
                 return EndRent();
             }
             return -1;
         }
 
+        // 해당 컴퓨터가 어떤 타입인지 리턴
         public string GetInstanceTypeToString()
         {
             if(this is NetBook)
@@ -70,10 +79,12 @@ namespace Practice
             }
             else
             {
+                // 정의되지 않은 자식 클래스이면
                 return "Not Defined";
             }
         }
 
+       // 사용가능한 서비스들의 string 을 return
         public string GetServicesToString()
         {
             var services = "";
